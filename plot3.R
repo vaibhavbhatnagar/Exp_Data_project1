@@ -3,8 +3,11 @@ febdata = subset(data, as.character(data$Date) == "1/2/2007" | as.character(data
 wDays <- strptime(paste(febdata$Date, febdata$Time), format='%d/%m/%Y %H:%M:%S')
 x <- wDays
 y <- febdata$Sub_metering_1
+png(file = "plot3.png", width = 480, height = 480)
 plot(wDays,y, type = "n", ,xlab = "", ylab = "Energy sub metering")
 lines(wDays,febdata$Sub_metering_1)
 lines(wDays,febdata$Sub_metering_2, col = "red")
 lines(wDays,febdata$Sub_metering_3, col = "blue")
 legend("topright", col = c("black", "red", "blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lwd=c(2.5,2.5))
+
+dev.off()
